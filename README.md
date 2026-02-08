@@ -4,18 +4,18 @@ This repository contains system analysis and design documents for the insurance 
 
 ## Contents
 
-System development plan
+System Development Plan
 
 Data Flow Diagram
 
 Data Dictionary
 
-DB2 Instance with fields
+DB2 Instance with Field Definition
 
-Source code
+Source Code Structure - Code Rules, Copybook, Connected z/OS with VS Code
 
-System test results
+System Test Results - Pilot Test, Integrated Test, Parallel Test
 
-Migration schedule
+Migration Schedule 
 
 
