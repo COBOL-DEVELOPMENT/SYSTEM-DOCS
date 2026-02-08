@@ -1,21 +1,33 @@
 ## System Documents
-This repository contains system analysis and design documents for the insurance (Health) policy onboarding systems.
+This repository contains system analysis and design documents for the insurance policy onboarding system.
 
 
 ## Contents
 
-System Development Plan
+1. System Development Plan
 
-Data Flow Diagram
+2. Data Flow Diagram
 
-Data Dictionary
+3. Data Dictionary
 
-DB2 Instance with Field Definition
+4. DB2 Instance and Field Definitions
 
-Source Code Structure - Code Rules, Copybook, Connected z/OS with VS Code
+5. Source Code Structure
 
-System Test Results - Pilot Test, Integrated Test, Parallel Test
+   5.1 Code Rules
+   
+   5.2 CopyBook
+  
+   5.3 z/OS connection vith VS Code
 
-Migration Schedule 
+6. System Test Results - Pilot Test, Integrated Test, Parallel Test
+
+   6.1 Pilot Test
+
+   6.2 Integrated Test
+
+   6.3 Parallel Test 
+
+7. Migration Schedule 
 
 
