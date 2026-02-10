@@ -1,3 +1,13 @@
+Note on Data Design: 
+
+To ensure data integrity and minimize redundancy, only code values are stored in the databases. 
+
+All descriptions for display purposes are retrieved from the Code Book via lookup/join operations.
+
+
+
+Database Overview:
+
 1. Applicant Information - The insurance applicant information for applying the policy.
 
 2. Reject Customer D/B: The Underwriting department rejected to issue the policy, the database stores refused customer information.
