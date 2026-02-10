@@ -1,8 +1,8 @@
 Note on Data Design: 
 
-To ensure data integrity and minimize redundancy, only code values are stored in the databases. 
+ To ensure data integrity and minimize redundancy, only code values are stored in the databases. 
 
-All descriptions for display purposes are retrieved from the Code Book via lookup/join operations.
+ All descriptions for display purposes are retrieved from the Code Book via lookup/join operations.
 
 
 
