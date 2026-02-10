@@ -1,30 +1,31 @@
-Data Design Principles
-   To ensure long-term maintainability and system robustness, the following architectural principles have been applied to the database design:
+# Data Design Principles
 
-1. Normalization & Code-Based Storage:
-Strategy: We strictly store only Code values (e.g., Char 1) within transactional tables.
+To ensure long-term maintainability and system robustness, the following architectural principles have been applied to the database design:
 
-Rationale: Storing raw text descriptions leads to data redundancy and inconsistency. By decoupling data from its labels, we maintain a Single Source of Truth.
+---
 
-Implementation: All human-readable descriptions must be dynamically retrieved from the Code Book via JOIN or Lookup operations during data inquiry.
+## 1. Normalization & Code-Based Storage
+* **Strategy:** We strictly store only Code values (e.g., Char 1) within transactional tables. 
+* **Rationale:** Storing raw text descriptions leads to data redundancy and inconsistency. By decoupling data from its labels, we maintain a **Single Source of Truth**. 
+* **Implementation:** All human-readable descriptions must be dynamically retrieved from the Code Book via JOIN or Lookup operations during data inquiry.
 
-2. Standardized Timeline Management (Proceed_Date)
-Strategy: Every Data Store and Data Flow utilizes a unified timestamp field: Proceed_Date.
+---
 
-Rationale: In insurance systems, tracking the exact moment a status changes (from Application to Underwriting to Issuance) is critical for Audit Trails and legal compliance.
+## 2. Standardized Timeline Management (`Proceed_Date`)
+* **Strategy:** Every Data Store and Data Flow utilizes a unified timestamp field: `Proceed_Date`.
+* **Rationale:** In insurance systems, tracking the exact moment a status changes is critical for **Audit Trails** and legal compliance.
+* **Implementation:** This field records the finalization of each specific process, ensuring consistent time-series analysis across the entire lifecycle.
 
-Implementation: This field records the finalization of each specific process, ensuring consistent time-series analysis across the entire lifecycle.
+---
 
-3. Future-Proofing via Reserved Fields
-Strategy: Every table is pre-allocated with three Reserved Fields (Reserved_01 ~ 03).
+## 3. Future-Proofing via Reserved Fields
+* **Strategy:** Every table is pre-allocated with three Reserved Fields (`Reserved_01` ~ `03`).
+* **Rationale:** Database schema migrations and data conversions are costly and risky. Reserved fields allow for **"on-the-fly"** data expansion.
+* **Specification:** Each field is defined as **100-byte Alpha-Numeric**, providing enough flexibility to handle new codes, flags, or identifiers without modifying the physical table structure.
 
-Rationale: Database schema migrations and data conversions are costly and risky. Reserved fields allow for "on-the-fly" data expansion.
+---
 
-Specification: Each field is defined as 100-byte Alpha-Numeric, providing enough flexibility to handle new codes, flags, or identifiers without modifying the physical table structure.
-
-4. Clear Key Separation
-Strategy: A strict boundary is maintained between Primary Keys (PK) and Alternative Keys (AK).
-
-Rationale: PKs (like Customer_ID) manage internal system integrity, while AKs (like Policy_No or Applicant_ID) handle business-level identification.
-
-Benefit: This separation ensures that even if business logic changes, the underlying data relationships remain stable and indexed for performance.
+## 4. Clear Key Separation
+* **Strategy:** A strict boundary is maintained between Primary Keys (PK) and Alternative Keys (AK).
+* **Rationale:** PKs (like `Customer_ID`) manage internal system integrity, while AKs (like `Policy_No` or `Applicant_ID`) handle business-level identification.
+* **Benefit:** This separation ensures that even if business logic changes, the underlying data relationships remain stable and indexed for performance.
