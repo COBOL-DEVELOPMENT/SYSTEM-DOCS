@@ -1,6 +1,36 @@
 # Insurance Core System
-## Data Dictionary (Ver 4.0: Add desription) 
+## Data Dictionary (Ver 5.0: Add fields to the 4_Customer_DB and 8_Insurance_Policy. Add codes to the Codebook)
 > PK = 🔑  |  FK = 🔗
+---
+
+### 4_Customer_Table
+- Add `Current_Policy_Version_No` (INT, NOT NULL)
+
+---
+
+### 8_Insurance_Policy Table
+- Add `Policy_Version_No` (INT, PK)
+- Add `Change_Type_Code` (CHAR(2), NOT NULL) — include `OT` (Other, manual entry)
+- Add `Prev_Version_No` (INT, NULL)
+- Add `Effective_Date` (DATE, NOT NULL)
+- Add `End_Date` (DATE, NULL)
+
+---
+
+### Codebook:
+- Add `POLICY_CHANGE_TYPE` codes to the `CODEBOOK_ADDENDUM` sheet
+
+---
+
+### POLICY_CHANGE_TYPE Codes
+
+| Code | Description               |
+|------|---------------------------|
+| NW   | New Policy                |
+| EN   | Endorsement (Change)      |
+| CN   | Cancellation              |
+| RS   | Reinstatement             |
+| OT   | Other (Manual Entry)      |
 
 ---
 
