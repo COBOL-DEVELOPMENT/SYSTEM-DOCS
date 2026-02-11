@@ -76,6 +76,8 @@
 | Blacklist_Ind | CHAR(1) |  |  | N |  | Code: YN_FLAG (TBD) |
 | Proceed_Date | DATETIME |  |  | N |  | Standard timeline field: process finalized timestamp |
 | Reserved_01 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
+| Reserved_02 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
+| Reserved_03 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
 | Created_By | VARCHAR(30) |  |  | N |  | Created by (user/system id) |
 | Created_At | DATETIME |  |  | N |  | Created timestamp |
 | Updated_By | VARCHAR(30) |  |  | Y |  | Last updated by (user/system id) |
@@ -99,6 +101,8 @@
 | Batch_Run_ID | VARCHAR(30) |  |  | Y |  |  |
 | Proceed_Date | DATETIME |  |  | N |  | Standard timeline field: process finalized timestamp |
 | Reserved_01 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
+| Reserved_02 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
+| Reserved_03 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
 | Created_By | VARCHAR(30) |  |  | N |  | Created by (user/system id) |
 | Created_At | DATETIME |  |  | N |  | Created timestamp |
 | Updated_By | VARCHAR(30) |  |  | Y |  | Last updated by (user/system id) |
@@ -176,6 +180,8 @@
 | Used_For_Policy_No | VARCHAR(30) |  |  | Y |  | Policy number used for issuance (if finalized) |
 | Proceed_Date | DATETIME |  |  | N |  | Standard timeline field: process finalized timestamp |
 | Reserved_01 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
+| Reserved_02 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
+| Reserved_03 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
 | Created_By | VARCHAR(30) |  |  | N |  | Created by (user/system id) |
 | Created_At | DATETIME |  |  | N |  | Created timestamp |
 | Updated_By | VARCHAR(30) |  |  | Y |  | Last updated by (user/system id) |
