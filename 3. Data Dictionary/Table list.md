@@ -1,14 +1,15 @@
 <small>
  
 #### Insurance Core System
-DB Components Data Dictionary 
+#### DB Components Data Dictionary 
 
-Ver 3.0 
-1. Removed Reserved_02 and Reserved_03 fields.
-2. Created DDL_SQL.
-3. The 6_Customer_Information table has foreign keys to 4_Customer_DB (Customer_ID), Code Book (PRODUCT), and Code Book (POLICY_STATUS).
+#### Ver 3.0 
+#### 1. Removed Reserved_02 and Reserved_03 fields.
+#### 2. Created DDL_SQL.
+#### 3. The 6_Customer_Information table has foreign keys to 4_Customer_DB (Customer_ID), Code Book (PRODUCT), and Code Book (POLICY_STATUS).
 
-   
+---   
+ 6_Customer_Information
 
 | Field Name | Description | Data Type | Length | Key | Remarks |
 |------------|------------|-----------|--------|-----|---------|
@@ -17,6 +18,8 @@ Ver 3.0
 | Policy_Status_Code | Policy status code | CHAR(2) | 2 |  | Refer to Code Book (POLICY_STATUS) \| NOT NULL |
 | Proceed_Date | Operational information finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
 | Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
+
+---
 
 
 > Key Legend: 🔑PK (Primary Key) / 🔗FK (Foreign Key)
@@ -98,18 +101,6 @@ Ver 3.0
 | Risk_Class_Code | Risk classification code | CHAR(2) | 2 |  | Refer to Code Book (RISK_CLASS) |
 | Inspector_ID | Inspector / investigator ID | VARCHAR(20) | 20 |  |  |
 | Proceed_Date | Underwriting decision finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
-| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
-
----
-
- 6_Customer_Information
-
-| Field Name | Description | Data Type | Length | Key | Remarks |
-|------------|------------|-----------|--------|-----|---------|
-| Customer_ID | Unique customer identifier | BIGINT | 19 | 🔑PK/🔗FK | Ref: 4_Customer_DB(Customer_ID) \| NOT NULL |
-| Applied_Product_Code | Applied product code | CHAR(2) | 2 |  | Refer to Code Book (PRODUCT) \| NOT NULL |
-| Policy_Status_Code | Policy status code | CHAR(2) | 2 |  | Refer to Code Book (POLICY_STATUS) \| NOT NULL |
-| Proceed_Date | Operational information finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
 | Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
 
 ---
