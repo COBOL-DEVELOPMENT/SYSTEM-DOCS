@@ -5,11 +5,13 @@ DB Components Data Dictionary
 
 ---
 
-Ver 5.0:
-1. Reserved simplification - Single Reserved field
-2. Code book adaptation:
-   - The New Code length is 2 byte charactor.
-   - Created DDL_SQL 
+Ver 6.0:
+1. Policy versioning management
+   - Add policy change reason code and change memo to 8_insurance-Policy table.
+   - Add previous version number to 8_insurance-Policy table.
+
+3. Code book adaptation:
+   - The policy version code.
    
 ---   
  
@@ -124,13 +126,20 @@ Ver 5.0:
 
  8_Insurance_Policy
 
-| Field Name | Description | Data Type | Length | Key | Remarks |
-|------------|------------|-----------|--------|-----|---------|
-| Policy_No | Policy number | VARCHAR(30) | 30 | 🔑PK/🔗FK | Ref: 4_Customer_DB(Policy_No) \| NOT NULL |
-| Issue_Date | Issue date | DATE | - |  | NOT NULL |
-| Coverage_Code | Coverage / rider code | CHAR(2) | 2 |  | Refer to Code Book (COVERAGE) |
-| Policy_Document_ID | Policy document identifier | VARCHAR(50) | 50 |  | NOT NULL |
-| Proceed_Date | Policy issuance finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
-| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
+| Field Name          | Data Type       | Length | Key   | Remarks |
+|--------------------|----------------|--------|-------|---------|
+| Policy_No          | VARCHAR(30)    | 30     | PK/FK | Ref: 4_Customer_DB(Policy_No) \| NOT NULL |
+| Policy_Version_No  | INT            | 10     | PK    | NOT NULL |
+| Change_Type_Code   | CHAR(2)        | 2      |       | Refer to Code Book (POLICY_CHANGE_TYPE) \| NOT NULL \| Include 'OT' (Other) for manual entry |
+| Change_Reason_Code | CHAR(2)        | 2      |       | Refer to Code Book (POLICY_CHANGE_REASON) \| Required when Change_Type_Code = 'OT' |
+| Change_Memo        | VARCHAR(200)   | 200    |       | Required when Change_Type_Code = 'OT' |
+| Prev_Version_No    | INT            | 10     |       |  |
+| Issue_Date         | DATE           | -      |       | NOT NULL |
+| Effective_Date     | DATE           | -      |       | NOT NULL |
+| End_Date           | DATE           | -      |       |  |
+| Coverage_Code      | CHAR(2)        | 2      |       | Refer to Code Book (COVERAGE) |
+| Policy_Document_ID | VARCHAR(50)    | 50     |       | NOT NULL |
+| Proceed_Date       | DATETIME       | -      |       | System Timestamp \| NOT NULL |
+| Reserved           | VARCHAR(100)   | 100    |       | Alphanumeric only |
 
 </div>
