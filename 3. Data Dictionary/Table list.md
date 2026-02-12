@@ -1,4 +1,4 @@
-<div style="font-size:10px;">
+<div style="font-size:8px;">
  
 Insurance Core System
 DB Components Data Dictionary 
