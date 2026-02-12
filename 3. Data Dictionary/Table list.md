@@ -1,8 +1,9 @@
-#### Insurance Core System
- DB Components Data Dictionary 
+<small>
+Insurance Core System
+DB Components Data Dictionary 
 
 Ver 3.0 Adjusted field
-1. Reserved field adjusted to keep just one column.
+1. Removed Reserved_02 and Reserved_03 fields.
 2. Created DDL_SQL.
 
 
@@ -125,3 +126,4 @@ Ver 3.0 Adjusted field
 | Policy_Document_ID | Policy document identifier | VARCHAR(50) | 50 |  | NOT NULL |
 | Proceed_Date | Policy issuance finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
 | Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
+</small>
