@@ -146,13 +146,14 @@ Ver 6.0: version and policy change management
 </div>
 
 <div>
+
  /* ============================================================
    8_Insurance_Policy
    - PK: (Policy_No, Policy_Version_No)
    - FK: Policy_No -> 4_Customer(Policy_No)
    - Rule: If Change_Type_Code='OT' then Change_Reason_Code & Change_Memo required
    ============================================================ */
-
+ ```sql
 CREATE TABLE `8_Insurance_Policy` (
   `Policy_No`          VARCHAR(30)  NOT NULL,
   `Policy_Version_No`  INT          NOT NULL,
@@ -185,5 +186,5 @@ CREATE TABLE `8_Insurance_Policy` (
       )
     )
 ) ENGINE=InnoDB;
-
+```
 </div>
