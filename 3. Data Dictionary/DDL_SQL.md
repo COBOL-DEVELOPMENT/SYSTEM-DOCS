@@ -1,19 +1,11 @@
-Insurance System Database DDL
-Overview
+### Insurance System Database DDL
 
-This document contains the DDL (Data Definition Language) scripts for the Insurance System database.
+#### Overview
 
-The schema includes:
-1. Applicant Information
-2. Reject Customer DB
-3. Reject Customer Information
-4. Customer DB
-5. Underwriting Information
-6. Customer Information
-7. Premium Information
-8. Insurance Policy
+#### This document contains the DDL_SQL scripts for the Insurance System database.
 
-Table Definitions
+#### DDL
+```sql
 -- ============================================
 -- 1. Applicant Information
 -- ============================================
@@ -139,3 +131,4 @@ CREATE TABLE 8_Insurance_Policy (
   Reserved VARCHAR(100) NULL,
   CONSTRAINT PK_8_Insurance_Policy PRIMARY KEY (Policy_No)
 );
+```
