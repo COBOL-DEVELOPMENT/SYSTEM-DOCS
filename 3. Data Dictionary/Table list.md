@@ -1,4 +1,4 @@
-<small>
+<div style="font-size:10px;">
  
 Insurance Core System
 DB Components Data Dictionary 
@@ -131,4 +131,4 @@ Ver 3.0
 | Proceed_Date | Policy issuance finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
 | Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
 
-</small>
+</div>
