@@ -1,214 +1,127 @@
-# Insurance Core System
-## Data Dictionary (Column attributes)
+### Insurance Core System
+#### DB Components Data Dictionary 
 
-> PK = 🔑  |  FK = 🔗
+Ver 3.0 Adjusted field
+1. Reserved field adjusted to keep just one column.
+2. Created DDL_SQL.
 
----
 
-# TB_APPLICANT_APPLICATION
-
-| Column_Name | Data_Type | PK | FK_Ref | Nullable | Default | Description |
-|------------|-----------|----|--------|----------|---------|-------------|
-| Applicant_ID | BIGINT | 🔑 |  | N |  | Internal applicant identifier |
-| Application_No | VARCHAR(20) |  |  | N |  | Application number (unique) |
-| Full_Name | VARCHAR(100) |  |  | N |  |  |
-| DOB | DATE |  |  | N |  |  |
-| Gender_Code | CHAR(1) |  |  | N |  | Code: GENDER |
-| Address_Line1 | VARCHAR(120) |  |  | N |  |  |
-| Address_Line2 | VARCHAR(120) |  |  | Y |  |  |
-| City | VARCHAR(60) |  |  | N |  |  |
-| State_Code | CHAR(2) |  |  | N |  |  |
-| Zip_Code | VARCHAR(10) |  |  | N |  |  |
-| Country_Code | CHAR(2) |  |  | N | US |  |
-| Phone_No | VARCHAR(30) |  |  | Y |  |  |
-| Email | VARCHAR(120) |  |  | Y |  |  |
-| Occupation_Code | VARCHAR(10) |  |  | N |  | Code: OCCUPATION (TBD) |
-| Applied_Product_Code | VARCHAR(20) |  |  | N |  | Code: PRODUCT |
-| Plan_Code | VARCHAR(20) |  |  | Y |  | Code: PLAN |
-| Channel_Code | VARCHAR(10) |  |  | N |  | Code: CHANNEL |
-| Agent_ID | VARCHAR(20) |  |  | Y |  | Agent identifier |
-| Proceed_Date | DATETIME |  |  | N |  | Standard timeline field: process finalized timestamp |
-| Reserved_01 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_02 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_03 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Created_By | VARCHAR(30) |  |  | N |  | Created by (user/system id) |
-| Created_At | DATETIME |  |  | N |  | Created timestamp |
-| Updated_By | VARCHAR(30) |  |  | Y |  | Last updated by (user/system id) |
-| Updated_At | DATETIME |  |  | Y |  | Last updated timestamp |
+> Key Legend: 🔑PK (Primary Key) / 🔗FK (Foreign Key)
 
 ---
 
-# TB_UW_CASE
+### 1_Applicant_Information
 
-| Column_Name | Data_Type | PK | FK_Ref | Nullable | Default | Description |
-|------------|-----------|----|--------|----------|---------|-------------|
-| UW_Case_No | VARCHAR(30) | 🔑 |  | N |  |  |
-| Applicant_ID | BIGINT |  | 🔗 TB_APPLICANT_APPLICATION(Applicant_ID) | N |  |  |
-| Underwriting_Decision_Code | VARCHAR(10) |  |  | N |  | Code: UW_DECISION |
-| Risk_Class_Code | VARCHAR(10) |  |  | Y |  | Code: RISK_CLASS |
-| Rate_Adjustment_Factor | DECIMAL(8,4) |  |  | Y |  |  |
-| Exclusion_Code | VARCHAR(20) |  |  | Y |  | Code: EXCLUSION |
-| Postpone_Reason_Code | VARCHAR(20) |  |  | Y |  | Code: POSTPONE_REASON |
-| Inspector_ID | VARCHAR(20) |  |  | Y |  |  |
-| Underwriter_ID | VARCHAR(20) |  |  | Y |  |  |
-| Proceed_Date | DATETIME |  |  | N |  | Standard timeline field: process finalized timestamp |
-| Reserved_01 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_02 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_03 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Created_By | VARCHAR(30) |  |  | N |  | Created by (user/system id) |
-| Created_At | DATETIME |  |  | N |  | Created timestamp |
-| Updated_By | VARCHAR(30) |  |  | Y |  | Last updated by (user/system id) |
-| Updated_At | DATETIME |  |  | Y |  | Last updated timestamp |
-
----
-
-# TB_REJECT_CUSTOMER
-
-| Column_Name | Data_Type | PK | FK_Ref | Nullable | Default | Description |
-|------------|-----------|----|--------|----------|---------|-------------|
-| Reject_ID | BIGINT | 🔑 |  | N |  |  |
-| Applicant_ID | BIGINT |  | 🔗 TB_APPLICANT_APPLICATION(Applicant_ID) | N |  |  |
-| UW_Case_No | VARCHAR(30) |  | 🔗 TB_UW_CASE(UW_Case_No) | Y |  |  |
-| Underwriting_Result_Code | VARCHAR(10) |  |  | N |  | Code: UW_RESULT |
-| Reject_Reason_Code | VARCHAR(20) |  |  | N |  | Code: REJECT_REASON |
-| Reapply_Allowed_Ind | CHAR(1) |  |  | N |  | Code: YN_FLAG (TBD) |
-| Reapply_After_Date | DATE |  |  | Y |  |  |
-| Blacklist_Ind | CHAR(1) |  |  | N |  | Code: YN_FLAG (TBD) |
-| Proceed_Date | DATETIME |  |  | N |  | Standard timeline field: process finalized timestamp |
-| Reserved_01 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_02 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_03 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Created_By | VARCHAR(30) |  |  | N |  | Created by (user/system id) |
-| Created_At | DATETIME |  |  | N |  | Created timestamp |
-| Updated_By | VARCHAR(30) |  |  | Y |  | Last updated by (user/system id) |
-| Updated_At | DATETIME |  |  | Y |  | Last updated timestamp |
+| Field Name | Description | Data Type | Length | Key | Remarks |
+|------------|------------|-----------|--------|-----|---------|
+| Applicant_ID | Unique applicant identifier | BIGINT | 19 | 🔑PK | NOT NULL |
+| Name | Applicant full name | VARCHAR(100) | 100 |  | NOT NULL |
+| DOB | Date of birth | DATE | - |  | NOT NULL |
+| Gender_Code | Gender code | CHAR(2) | 2 |  | Refer to Code Book (GENDER) \| NOT NULL |
+| Address_Line1 | Address line 1 | VARCHAR(120) | 120 |  | NOT NULL |
+| Address_Line2 | Address line 2 | VARCHAR(120) | 120 |  |  |
+| City | City | VARCHAR(60) | 60 |  | NOT NULL |
+| State_Code | State code | CHAR(2) | 2 |  | NOT NULL |
+| Zip_Code | Postal code | VARCHAR(10) | 10 |  | NOT NULL |
+| Phone_No | Phone number | VARCHAR(30) | 30 |  |  |
+| Email | Email address | VARCHAR(120) | 120 |  |  |
+| Occupation_Code | Occupation code | CHAR(2) | 2 |  | Refer to Code Book (OCCUPATION) \| NOT NULL |
+| Applied_Product_Code | Applied product code | CHAR(2) | 2 |  | Refer to Code Book (PRODUCT) \| NOT NULL |
+| Coverage_Code | Coverage / main rider code | CHAR(2) | 2 |  | Refer to Code Book (COVERAGE) |
+| Proceed_Date | Application finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
+| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
 
 ---
 
-# TB_REJECT_NOTICE
+### 2_Reject_Customer
 
-| Column_Name | Data_Type | PK | FK_Ref | Nullable | Default | Description |
-|------------|-----------|----|--------|----------|---------|-------------|
-| Reject_Notice_ID | BIGINT | 🔑 |  | N |  |  |
-| Reject_ID | BIGINT |  | 🔗 TB_REJECT_CUSTOMER(Reject_ID) | N |  |  |
-| Applicant_ID | BIGINT |  | 🔗 TB_APPLICANT_APPLICATION(Applicant_ID) | N |  |  |
-| Notice_Template_ID | VARCHAR(30) |  |  | N |  | Template identifier (code/id) |
-| Language_Code | CHAR(2) |  |  | N |  | Code: LANGUAGE |
-| Delivery_Channel_Code | VARCHAR(10) |  |  | N |  | Code: DELIVERY_CHANNEL |
-| Send_Status_Code | VARCHAR(10) |  |  | N |  | Code: SEND_STATUS |
-| Fail_Reason_Code | VARCHAR(20) |  |  | Y |  | Code: FAIL_REASON |
-| Notice_Document_ID | VARCHAR(50) |  |  | Y |  |  |
-| Batch_Run_ID | VARCHAR(30) |  |  | Y |  |  |
-| Proceed_Date | DATETIME |  |  | N |  | Standard timeline field: process finalized timestamp |
-| Reserved_01 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_02 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_03 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Created_By | VARCHAR(30) |  |  | N |  | Created by (user/system id) |
-| Created_At | DATETIME |  |  | N |  | Created timestamp |
-| Updated_By | VARCHAR(30) |  |  | Y |  | Last updated by (user/system id) |
-| Updated_At | DATETIME |  |  | Y |  | Last updated timestamp |
+| Field Name | Description | Data Type | Length | Key | Remarks |
+|------------|------------|-----------|--------|-----|---------|
+| Reject_ID | Unique reject record identifier | BIGINT | 19 | 🔑PK | NOT NULL |
+| Applicant_ID | Unique applicant identifier | BIGINT | 19 | 🔗FK | Ref: 1_Applicant_Information(Applicant_ID) \| NOT NULL |
+| Underwriting_Result_Code | Final underwriting result code | CHAR(2) | 2 |  | Refer to Code Book (UW_RESULT) \| NOT NULL |
+| Reject_Reason_Code | Reject reason code | CHAR(2) | 2 |  | Refer to Code Book (REJECT_REASON) \| NOT NULL |
+| Proceed_Date | Reject processing finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
+| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
 
 ---
 
-# TB_CUSTOMER_MASTER
+### 3_Reject_Customer_Information
 
-| Column_Name | Data_Type | PK | FK_Ref | Nullable | Default | Description |
-|------------|-----------|----|--------|----------|---------|-------------|
-| Customer_ID | BIGINT | 🔑 |  | N |  |  |
-| Applicant_ID | BIGINT |  | 🔗 TB_APPLICANT_APPLICATION(Applicant_ID) | N |  |  |
-| Policy_No | VARCHAR(30) |  |  | N |  | Policy number (unique) |
-| Policy_Status_Code | VARCHAR(20) |  |  | N |  | Code: POLICY_STATUS (TBD) |
-| Product_Code | VARCHAR(20) |  |  | N |  | Code: PRODUCT |
-| Plan_Code | VARCHAR(20) |  |  | Y |  | Code: PLAN |
-| Billing_Frequency_Code | VARCHAR(10) |  |  | N |  | Code: BILL_FREQ |
-| Payment_Method_Code | VARCHAR(10) |  |  | Y |  | Code: PAY_METHOD |
-| Premium_Amount | DECIMAL(18,2) |  |  | N |  |  |
-| Address_Line1 | VARCHAR(120) |  |  | N |  |  |
-| Address_Line2 | VARCHAR(120) |  |  | Y |  |  |
-| City | VARCHAR(60) |  |  | N |  |  |
-| State_Code | CHAR(2) |  |  | N |  |  |
-| Zip_Code | VARCHAR(10) |  |  | N |  |  |
-| Country_Code | CHAR(2) |  |  | N | US |  |
-| Phone_No | VARCHAR(30) |  |  | Y |  |  |
-| Email | VARCHAR(120) |  |  | Y |  |  |
-| Proceed_Date | DATETIME |  |  | N |  | Standard timeline field: process finalized timestamp |
-| Reserved_01 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_02 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_03 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Created_By | VARCHAR(30) |  |  | N |  | Created by (user/system id) |
-| Created_At | DATETIME |  |  | N |  | Created timestamp |
-| Updated_By | VARCHAR(30) |  |  | Y |  | Last updated by (user/system id) |
-| Updated_At | DATETIME |  |  | Y |  | Last updated timestamp |
+| Field Name | Description | Data Type | Length | Key | Remarks |
+|------------|------------|-----------|--------|-----|---------|
+| Reject_ID | Unique reject record identifier | BIGINT | 19 | 🔑PK/🔗FK | Ref: 2_Reject_Customer_DB(Reject_ID) \| NOT NULL |
+| Full_Name | Rejected customer name (snapshot) | VARCHAR(100) | 100 |  | NOT NULL |
+| Reject_Reason_Code | Reject reason code (customer-facing display) | CHAR(2) | 2 |  | Refer to Code Book (REJECT_REASON) \| NOT NULL |
+| Notice_Date | Notice reference date | DATE | - |  | NOT NULL |
+| Notice_Template_Code | Notice template code | CHAR(2) | 2 |  | Refer to Code Book (NOTICE_TEMPLATE) |
+| Language_Code | Language code | CHAR(2) | 2 |  | Refer to Code Book (LANGUAGE) |
+| Proceed_Date | Notice information finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
+| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
 
 ---
 
-# TB_CUSTOMER_OP_SNAPSHOT
+### 4_Customer
 
-| Column_Name | Data_Type | PK | FK_Ref | Nullable | Default | Description |
-|------------|-----------|----|--------|----------|---------|-------------|
-| Snapshot_ID | BIGINT | 🔑 |  | N |  |  |
-| Customer_ID | BIGINT |  | 🔗 TB_CUSTOMER_MASTER(Customer_ID) | N |  |  |
-| Policy_No | VARCHAR(30) |  |  | N |  |  |
-| Product_Code | VARCHAR(20) |  |  | N |  | Code: PRODUCT |
-| Policy_Status_Code | VARCHAR(20) |  |  | N |  | Code: POLICY_STATUS (TBD) |
-| Proceed_Date | DATETIME |  |  | N |  | Standard timeline field: snapshot finalized timestamp |
-| Reserved_01 | VARCHAR(100) |  |  | Y |  |  |
-| Reserved_02 | VARCHAR(100) |  |  | Y |  |  |
-| Reserved_03 | VARCHAR(100) |  |  | Y |  |  |
-| Batch_Run_ID | VARCHAR(30) |  |  | Y |  | Batch run identifier |
-| Created_By | VARCHAR(30) |  |  | N |  |  |
-| Created_At | DATETIME |  |  | N |  |  |
+| Field Name | Description | Data Type | Length | Key | Remarks |
+|------------|------------|-----------|--------|-----|---------|
+| Customer_ID | Unique customer identifier | BIGINT | 19 | 🔑PK | NOT NULL |
+| Applicant_ID | Original applicant identifier | BIGINT | 19 | 🔗FK | Ref: 1_Applicant_Information(Applicant_ID) \| NOT NULL |
+| Policy_No | Policy number | VARCHAR(30) | 30 | AK | NOT NULL |
+| Current_Status_Code | Current policy status code | CHAR(2) | 2 |  | Refer to Code Book (POLICY_STATUS) \| NOT NULL |
+| Premium_Amount | Confirmed premium amount | DECIMAL(18,2) | 18,2 |  | NOT NULL |
+| Proceed_Date | Customer conversion finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
+| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
 
 ---
 
-# TB_PREMIUM_CALC_RESULT
+### 5_Underwriting_Information
 
-| Column_Name | Data_Type | PK | FK_Ref | Nullable | Default | Description |
-|------------|-----------|----|--------|----------|---------|-------------|
-| Premium_Calc_ID | BIGINT | 🔑 |  | N |  |  |
-| Applicant_ID | BIGINT |  | 🔗 TB_APPLICANT_APPLICATION(Applicant_ID) | N |  |  |
-| UW_Case_No | VARCHAR(30) |  | 🔗 TB_UW_CASE(UW_Case_No) | Y |  |  |
-| Product_Code | VARCHAR(20) |  |  | N |  | Code: PRODUCT |
-| Billing_Frequency_Code | VARCHAR(10) |  |  | N |  | Code: BILL_FREQ |
-| Risk_Class_Code | VARCHAR(10) |  |  | Y |  | Code: RISK_CLASS |
-| Discount_Code | VARCHAR(20) |  |  | Y |  | Code: DISCOUNT |
-| Surcharge_Code | VARCHAR(20) |  |  | Y |  | Code: SURCHARGE |
-| Net_Premium | DECIMAL(18,2) |  |  | N |  |  |
-| Loading_Factor | DECIMAL(8,4) |  |  | N |  |  |
-| Gross_Premium | DECIMAL(18,2) |  |  | N |  |  |
-| Is_Final_Ind | CHAR(1) |  |  | N |  | Code: YN_FLAG (TBD) |
-| Used_For_Policy_No | VARCHAR(30) |  |  | Y |  | Policy number used for issuance (if finalized) |
-| Proceed_Date | DATETIME |  |  | N |  | Standard timeline field: process finalized timestamp |
-| Reserved_01 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_02 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_03 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Created_By | VARCHAR(30) |  |  | N |  | Created by (user/system id) |
-| Created_At | DATETIME |  |  | N |  | Created timestamp |
-| Updated_By | VARCHAR(30) |  |  | Y |  | Last updated by (user/system id) |
-| Updated_At | DATETIME |  |  | Y |  | Last updated timestamp |
+| Field Name | Description | Data Type | Length | Key | Remarks |
+|------------|------------|-----------|--------|-----|---------|
+| UW_Case_No | Underwriting case number | VARCHAR(30) | 30 | 🔑PK | NOT NULL |
+| Applicant_ID | Unique applicant identifier | BIGINT | 19 | 🔗FK | Ref: 1_Applicant_Information(Applicant_ID) \| NOT NULL |
+| Underwriting_Decision_Code | Underwriting decision code | CHAR(2) | 2 |  | Refer to Code Book (UW_DECISION) \| NOT NULL |
+| Risk_Class_Code | Risk classification code | CHAR(2) | 2 |  | Refer to Code Book (RISK_CLASS) |
+| Inspector_ID | Inspector / investigator ID | VARCHAR(20) | 20 |  |  |
+| Proceed_Date | Underwriting decision finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
+| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
 
 ---
 
-# TB_POLICY_ISSUE
+### 6_Customer_Information
 
-| Column_Name | Data_Type | PK | FK_Ref | Nullable | Default | Description |
-|------------|-----------|----|--------|----------|---------|-------------|
-| Policy_No | VARCHAR(30) | 🔑 |  | N |  |  |
-| Policy_Version_No | INT | 🔑 |  | N |  |  |
-| Customer_ID | BIGINT |  | 🔗 TB_CUSTOMER_MASTER(Customer_ID) | N |  |  |
-| Issue_Date | DATE |  |  | N |  |  |
-| Effective_Date | DATE |  |  | N |  |  |
-| Policy_Document_ID | VARCHAR(50) |  |  | N |  |  |
-| Delivery_Channel_Code | VARCHAR(10) |  |  | Y |  | Code: DELIVERY_CHANNEL |
-| Delivery_Status_Code | VARCHAR(10) |  |  | Y |  | Code: DELIVERY_STATUS |
-| Batch_Run_ID | VARCHAR(30) |  |  | Y |  |  |
-| Proceed_Date | DATETIME |  |  | N |  | Standard timeline field: process finalized timestamp |
-| Reserved_01 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_02 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Reserved_03 | VARCHAR(100) |  |  | Y |  | Reserved field (100-byte alphanumeric) |
-| Created_By | VARCHAR(30) |  |  | N |  | Created by (user/system id) |
-| Created_At | DATETIME |  |  | N |  | Created timestamp |
-| Updated_By | VARCHAR(30) |  |  | Y |  | Last updated by (user/system id) |
-| Updated_At | DATETIME |  |  | Y |  | Last updated timestamp |
+| Field Name | Description | Data Type | Length | Key | Remarks |
+|------------|------------|-----------|--------|-----|---------|
+| Customer_ID | Unique customer identifier | BIGINT | 19 | 🔑PK/🔗FK | Ref: 4_Customer_DB(Customer_ID) \| NOT NULL |
+| Applied_Product_Code | Applied product code | CHAR(2) | 2 |  | Refer to Code Book (PRODUCT) \| NOT NULL |
+| Policy_Status_Code | Policy status code | CHAR(2) | 2 |  | Refer to Code Book (POLICY_STATUS) \| NOT NULL |
+| Proceed_Date | Operational information finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
+| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
 
 ---
+
+### 7_Premium_Information
+
+| Field Name | Description | Data Type | Length | Key | Remarks |
+|------------|------------|-----------|--------|-----|---------|
+| Premium_Calc_ID | Premium calculation ID | BIGINT | 19 | 🔑PK | NOT NULL |
+| Applicant_ID | Unique applicant identifier | BIGINT | 19 | 🔗FK | Ref: 1_Applicant_Information(Applicant_ID) \| NOT NULL |
+| Net_Premium | Net premium amount | DECIMAL(18,2) | 18,2 |  | NOT NULL |
+| Loading_Factor | Loading / discount factor | DECIMAL(8,4) | 8,4 |  | NOT NULL |
+| Calc_Date | Calculation date | DATE | - |  | NOT NULL |
+| Proceed_Date | Premium calculation finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
+| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
+
+---
+
+### 8_Insurance_Policy
+
+| Field Name | Description | Data Type | Length | Key | Remarks |
+|------------|------------|-----------|--------|-----|---------|
+| Policy_No | Policy number | VARCHAR(30) | 30 | 🔑PK/🔗FK | Ref: 4_Customer_DB(Policy_No) \| NOT NULL |
+| Issue_Date | Issue date | DATE | - |  | NOT NULL |
+| Coverage_Code | Coverage / rider code | CHAR(2) | 2 |  | Refer to Code Book (COVERAGE) |
+| Policy_Document_ID | Policy document identifier | VARCHAR(50) | 50 |  | NOT NULL |
+| Proceed_Date | Policy issuance finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
+| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
