@@ -13,7 +13,6 @@ Ver 6.0: version and policy change management
 
 2. Code book 
    - Add policy change and reason code.
-   - Add policy version and previous.
    
 ---   
  
