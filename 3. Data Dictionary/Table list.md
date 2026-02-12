@@ -3,15 +3,15 @@
 Insurance Core System
 DB Components Data Dictionary 
 
-Ver 3.0 
+---
+
+Ver 3.0:
 1. Removed Reserved_02 and Reserved_03 fields
 2. Created DDL_SQL
 3. The 6_Customer_Information table has foreign keys to 4_Customer_DB (Customer_ID), Code Book (PRODUCT), and Code Book (POLICY_STATUS)
-
 ---   
  
 > Key Legend: 🔑PK (Primary Key) / 🔗FK (Foreign Key)
-
 ---
 
  1_Applicant_Information
