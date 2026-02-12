@@ -5,13 +5,16 @@ DB Components Data Dictionary
 
 ---
 
-Ver 6.0:
-1. Policy versioning management
-   - Add policy change reason code and change memo to 8_insurance-Policy table.
+Ver 6.0: version and policy change management
+1. 8_insurance-Policy table 
+   - Policy versioning: Policy version and previous version
+   - add policy change code and reason 
+   - Add policy version and previous version change reason code and change memo to 8_insurance-Policy table.
    - Add previous version number to 8_insurance-Policy table.
 
-3. Code book adaptation:
-   - The policy version code.
+2. Code book 
+   - Add policy change code /  reason.
+   - Add policy version / previous.
    
 ---   
  
