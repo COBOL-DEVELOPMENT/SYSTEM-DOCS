@@ -5,9 +5,11 @@ DB Components Data Dictionary
 
 ---
 
-Ver 4.0:
+Ver 5.0:
 1. Reserved simplification - Single Reserved field
-2. Code book applied - Code size optimization as Char(2)
+2. Code book adaptation:
+   - The New Code length is 2 byte charactor.
+   - Created DDL_SQL 
    
 ---   
  
