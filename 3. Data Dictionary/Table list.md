@@ -144,3 +144,46 @@ Ver 6.0: version and policy change management
 | Reserved           | VARCHAR(100)   | 100    |       | Alphanumeric only |
 
 </div>
+
+<div>
+ /* ============================================================
+   8_Insurance_Policy
+   - PK: (Policy_No, Policy_Version_No)
+   - FK: Policy_No -> 4_Customer(Policy_No)
+   - Rule: If Change_Type_Code='OT' then Change_Reason_Code & Change_Memo required
+   ============================================================ */
+
+CREATE TABLE `8_Insurance_Policy` (
+  `Policy_No`          VARCHAR(30)  NOT NULL,
+  `Policy_Version_No`  INT          NOT NULL,
+  `Change_Type_Code`   CHAR(2)      NOT NULL,
+  `Change_Reason_Code` CHAR(2)      NULL,
+  `Change_Memo`        VARCHAR(200) NULL,
+  `Prev_Version_No`    INT          NULL,
+  `Issue_Date`         DATE         NOT NULL,
+  `Effective_Date`     DATE         NOT NULL,
+  `End_Date`           DATE         NULL,
+  `Coverage_Code`      CHAR(2)      NULL,
+  `Policy_Document_ID` VARCHAR(50)  NOT NULL,
+  `Proceed_Date`       DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Reserved`           VARCHAR(100) NULL,
+
+  CONSTRAINT `PK_Insurance_Policy`
+    PRIMARY KEY (`Policy_No`, `Policy_Version_No`),
+
+  CONSTRAINT `FK_Policy_To_Customer`
+    FOREIGN KEY (`Policy_No`)
+    REFERENCES `4_Customer` (`Policy_No`),
+
+  CONSTRAINT `CK_Policy_OT_Required`
+    CHECK (
+      `Change_Type_Code` <> 'OT'
+      OR (
+        `Change_Reason_Code` IS NOT NULL
+        AND `Change_Memo` IS NOT NULL
+        AND CHAR_LENGTH(`Change_Memo`) > 0
+      )
+    )
+) ENGINE=InnoDB;
+
+</div>
