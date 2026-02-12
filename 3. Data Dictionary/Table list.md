@@ -9,19 +9,7 @@
 #### 3. The 6_Customer_Information table has foreign keys to 4_Customer_DB (Customer_ID), Code Book (PRODUCT), and Code Book (POLICY_STATUS).
 
 ---   
- 6_Customer_Information
-
-| Field Name | Description | Data Type | Length | Key | Remarks |
-|------------|------------|-----------|--------|-----|---------|
-| Customer_ID | Unique customer identifier | BIGINT | 19 | 🔑PK/🔗FK | Ref: 4_Customer_DB(Customer_ID) \| NOT NULL |
-| Applied_Product_Code | Applied product code | CHAR(2) | 2 |  | Refer to Code Book (PRODUCT) \| NOT NULL |
-| Policy_Status_Code | Policy status code | CHAR(2) | 2 |  | Refer to Code Book (POLICY_STATUS) \| NOT NULL |
-| Proceed_Date | Operational information finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
-| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
-
----
-
-
+ 
 > Key Legend: 🔑PK (Primary Key) / 🔗FK (Foreign Key)
 
 ---
@@ -104,6 +92,19 @@
 | Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
 
 ---
+
+6_Customer_Information
+
+| Field Name | Description | Data Type | Length | Key | Remarks |
+|------------|------------|-----------|--------|-----|---------|
+| Customer_ID | Unique customer identifier | BIGINT | 19 | 🔑PK/🔗FK | Ref: 4_Customer_DB(Customer_ID) \| NOT NULL |
+| Applied_Product_Code | Applied product code | CHAR(2) | 2 |  | Refer to Code Book (PRODUCT) \| NOT NULL |
+| Policy_Status_Code | Policy status code | CHAR(2) | 2 |  | Refer to Code Book (POLICY_STATUS) \| NOT NULL |
+| Proceed_Date | Operational information finalization timestamp | DATETIME | - |  | System Timestamp \| NOT NULL |
+| Reserved | Reserved (for future extension) | VARCHAR(100) | 100 |  | Alphanumeric only |
+
+---
+
 
  7_Premium_Information
 
