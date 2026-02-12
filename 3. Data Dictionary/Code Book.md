@@ -28,6 +28,18 @@
 | STATUS | POSTPONE | PP | Y | 2026-01-01 | Postponed |
 | STATUS | RATEUP | RU | Y | 2026-01-01 | Rate Increase |
 | STATUS | EXCLUDE | EX | Y | 2026-01-01 | Excluded |
+| POLICY_CHANAGE | NEW | NW | Y | 2026-01-01 | Excluded |
+| POLICY_CHANAGE |Endorsement| EN   | Y | 2026-01-01 | Excluded |
+| POLICY_CHANAGE |Cancel| CN   | Y | 2026-01-01 | Excluded |
+| POLICY_CHANAGE |Reinstate| RS  | Y | 2026-01-01 | Excluded |
+| POLICY_CHANAGE |Other| OT   | Y | 2026-01-01 | Excluded |  | Manual entry allowed; specify details in Change_Memo |
+| POLICY_CHANAGE_REASON |Address| 01  | Y | 2026-01-01  | Address Change           |
+| POLICY_CHANAGE_REASON |Beneficiary| 02  | Y | 2026-01-01  | Beneficiary Change       |
+| POLICY_CHANAGE_REASON |Coverage| 03  | Y | 2026-01-01  | Coverage Change          |
+| POLICY_CHANAGE_REASON |Health| 04  | Y | 2026-01-01  | Health Info Update       |
+| POLICY_CHANAGE_REASON |Payment| 05  | Y | 2026-01-01  | Payment Method Change    |
+| POLICY_CHANAGE_REASON |Billing| 06  | Y | 2026-01-01  | Billing Frequency Change   |
+| POLICY_CHANAGE_REASON |Other| OT   | Y | 2026-01-01 | Other                  | Use Change_Memo for details |
 
 ```sql
 CREATE TABLE code_mapping (
