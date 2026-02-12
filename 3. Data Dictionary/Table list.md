@@ -1,5 +1,5 @@
 ### Insurance Core System
-#### Data Dictionary v1.0 (Field Name Only)
+#### Ver 1.0 Table list
 
 ---
 
