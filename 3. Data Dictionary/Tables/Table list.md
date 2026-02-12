@@ -4,7 +4,7 @@ Insurance Core System
 DB Components Data Dictionary 
 
 ---
-
+fdgdf
 Ver 6.0: version and policy change management
 1. 8_insurance-Policy table 
    - Add policy version and previous version change reason code and change memo.
