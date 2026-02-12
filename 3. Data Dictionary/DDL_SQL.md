@@ -12,7 +12,8 @@ The schema includes:
 6. Customer Information
 7. Premium Information
 8. Insurance Policy
-   
+
+Table Definitions
 -- ============================================
 -- 1. Applicant Information
 -- ============================================
@@ -138,10 +139,3 @@ CREATE TABLE 8_Insurance_Policy (
   Reserved VARCHAR(100) NULL,
   CONSTRAINT PK_8_Insurance_Policy PRIMARY KEY (Policy_No)
 );
-
-Notes
-
-1. All tables use surrogate primary keys.
-2. Foreign key constraints are not yet defined.
-3. Reserved column is prepared for future system extension.
-4. Proceed_Date represents system processing timestamp.
