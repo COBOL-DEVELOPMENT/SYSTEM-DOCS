@@ -3,8 +3,18 @@
 #### Overview
 
 #### This document contains the DDL_SQL scripts for the Insurance System database.
+#### SQL List
+1. Applicant Information
+2. Reject Customer DB
+3. Reject Customer Information
+4. Customer DB
+5. Underwriting Information
+6. Customer Information
+7. Premium Information
+8. Insurance Policy
 
-#### DDL
+
+#### DDL 
 ```sql
 -- ============================================
 -- 1. Applicant Information
