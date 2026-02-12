@@ -1,5 +1,5 @@
-### Insurance Core System
-#### DB Components Data Dictionary 
+#### Insurance Core System
+ DB Components Data Dictionary 
 
 Ver 3.0 Adjusted field
 1. Reserved field adjusted to keep just one column.
@@ -10,7 +10,7 @@ Ver 3.0 Adjusted field
 
 ---
 
-### 1_Applicant_Information
+ 1_Applicant_Information
 
 | Field Name | Description | Data Type | Length | Key | Remarks |
 |------------|------------|-----------|--------|-----|---------|
@@ -33,7 +33,7 @@ Ver 3.0 Adjusted field
 
 ---
 
-### 2_Reject_Customer
+ 2_Reject_Customer
 
 | Field Name | Description | Data Type | Length | Key | Remarks |
 |------------|------------|-----------|--------|-----|---------|
@@ -46,7 +46,7 @@ Ver 3.0 Adjusted field
 
 ---
 
-### 3_Reject_Customer_Information
+ 3_Reject_Customer_Information
 
 | Field Name | Description | Data Type | Length | Key | Remarks |
 |------------|------------|-----------|--------|-----|---------|
@@ -61,7 +61,7 @@ Ver 3.0 Adjusted field
 
 ---
 
-### 4_Customer
+ 4_Customer
 
 | Field Name | Description | Data Type | Length | Key | Remarks |
 |------------|------------|-----------|--------|-----|---------|
@@ -75,7 +75,7 @@ Ver 3.0 Adjusted field
 
 ---
 
-### 5_Underwriting_Information
+ 5_Underwriting_Information
 
 | Field Name | Description | Data Type | Length | Key | Remarks |
 |------------|------------|-----------|--------|-----|---------|
@@ -89,7 +89,7 @@ Ver 3.0 Adjusted field
 
 ---
 
-### 6_Customer_Information
+ 6_Customer_Information
 
 | Field Name | Description | Data Type | Length | Key | Remarks |
 |------------|------------|-----------|--------|-----|---------|
@@ -101,7 +101,7 @@ Ver 3.0 Adjusted field
 
 ---
 
-### 7_Premium_Information
+ 7_Premium_Information
 
 | Field Name | Description | Data Type | Length | Key | Remarks |
 |------------|------------|-----------|--------|-----|---------|
@@ -115,7 +115,7 @@ Ver 3.0 Adjusted field
 
 ---
 
-### 8_Insurance_Policy
+ 8_Insurance_Policy
 
 | Field Name | Description | Data Type | Length | Key | Remarks |
 |------------|------------|-----------|--------|-----|---------|
