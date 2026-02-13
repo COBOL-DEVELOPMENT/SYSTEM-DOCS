@@ -11,26 +11,25 @@
 4. Applicant and policy status applied.
 
 #### SQL List
-1. Applicant Information
-2. Reject Customer DB
-3. Reject Customer Information
-4. Customer DB
-5. Underwriting Information
-6. Customer Information
-7. Premium Information
-8. Insurance Policy
+0. Customer
+1. Applicant
+2. Underwriting
+3. Premium Calculation
+4. Policy
+5. Reject
+6. Indexes
 
 ```sql
 
 /* =========================================================
-   Insurance System DB DDL
+   Insurance System Database DDL
    Core Structure:
    Customer → Applicant → Policy
    ========================================================= */
 
+
 /* =========================================================
    0. Customer
-   - Master record for person/entity
    ========================================================= */
 CREATE TABLE T0_Customer (
   Customer_ID    BIGINT       NOT NULL,
@@ -46,15 +45,14 @@ CREATE TABLE T0_Customer (
     PRIMARY KEY (Customer_ID)
 );
 
+
 /* =========================================================
    1. Applicant
-   - Application unit
-   - A customer may submit multiple applications
    ========================================================= */
 CREATE TABLE T1_Applicant (
   Applicant_ID             BIGINT        NOT NULL,
   Customer_ID              BIGINT        NOT NULL,
-  Application_Status_Code  CHAR(2)       NOT NULL,   -- NEW
+  Application_Status_Code  CHAR(2)       NOT NULL,
 
   Applied_Product_Code     CHAR(2)       NOT NULL,
   Coverage_Code            CHAR(2)       NULL,
@@ -80,7 +78,6 @@ CREATE TABLE T1_Applicant (
 
 /* =========================================================
    2. Underwriting
-   - Underwriting history per application
    ========================================================= */
 CREATE TABLE T2_Underwriting (
   UW_Case_No                 VARCHAR(30) NOT NULL,
@@ -99,9 +96,9 @@ CREATE TABLE T2_Underwriting (
     REFERENCES T1_Applicant (Applicant_ID)
 );
 
+
 /* =========================================================
    3. Premium Calculation
-   - Premium calculation history per application
    ========================================================= */
 CREATE TABLE T3_Premium_Calc (
   Premium_Calc_ID BIGINT        NOT NULL,
@@ -123,11 +120,9 @@ CREATE TABLE T3_Premium_Calc (
     UNIQUE (Applicant_ID, Calc_Date)
 );
 
+
 /* =========================================================
    4. Policy
-   - Contract table
-   - One customer can hold multiple policies
-   - One application results in one policy
    ========================================================= */
 CREATE TABLE T4_Policy (
   Policy_No           VARCHAR(30) NOT NULL,
@@ -135,7 +130,7 @@ CREATE TABLE T4_Policy (
   Applicant_ID        BIGINT      NOT NULL,
   Issue_Date          DATE        NOT NULL,
   Coverage_Code       CHAR(2)     NULL,
-  Policy_Status_Code  CHAR(2)     NOT NULL,  -- New 
+  Policy_Status_Code  CHAR(2)     NOT NULL,
   Policy_Document_ID  VARCHAR(50) NOT NULL,
   Proceed_Date        DATETIME    NOT NULL,
   Reserved            VARCHAR(100) NULL,
@@ -158,9 +153,9 @@ CREATE TABLE T4_Policy (
     REFERENCES T1_Applicant (Applicant_ID)
 );
 
+
 /* =========================================================
    5. Reject
-   - Rejected applications
    ========================================================= */
 CREATE TABLE T5_Reject (
   Reject_ID                BIGINT      NOT NULL,
@@ -181,16 +176,44 @@ CREATE TABLE T5_Reject (
     REFERENCES T1_Applicant (Applicant_ID)
 );
 
+
 /* =========================================================
-   Indexes used for policy retrieval logic
-   (Policy batch and contract lookup process)
+   Indexes 
    ========================================================= */
-CREATE INDEX IX_T1_Applicant_Customer ON T1_Applicant (Customer_ID);
-CREATE INDEX IX_T4_Policy_Customer    ON T4_Policy (Customer_ID);
-CREATE INDEX IX_T4_Policy_Applicant   ON T4_Policy (Applicant_ID);
-CREATE INDEX IX_T3_Premium_Applicant  ON T3_Premium_Calc (Applicant_ID);
-CREATE INDEX IX_T2_UW_Applicant       ON T2_Underwriting (Applicant_ID);
-CREATE INDEX IX_T5_Reject_Applicant   ON T5_Reject (Applicant_ID);
+
+/* Applicant */
+CREATE INDEX IX_T1_Applicant_Customer
+  ON T1_Applicant (Customer_ID);
+
+CREATE INDEX IX_T1_Applicant_Status
+  ON T1_Applicant (Application_Status_Code);
+
+
+/* Policy : to issue the policy */
+CREATE INDEX IX_T4_Policy_Status_Date
+  ON T4_Policy (Policy_Status_Code, Proceed_Date);
+
+CREATE INDEX IX_T4_Policy_Customer
+  ON T4_Policy (Customer_ID);
+
+CREATE INDEX IX_T4_Policy_Applicant
+  ON T4_Policy (Applicant_ID);
+
+
+/* Premium */
+CREATE INDEX IX_T3_Premium_AppDate
+  ON T3_Premium_Calc (Applicant_ID, Calc_Date DESC);
+
+
+/* Underwriting */
+CREATE INDEX IX_T2_UW_Applicant
+  ON T2_Underwriting (Applicant_ID);
+
+
+/* Reject */
+CREATE INDEX IX_T5_Reject_Applicant
+  ON T5_Reject (Applicant_ID);
+
 
 
 ```
