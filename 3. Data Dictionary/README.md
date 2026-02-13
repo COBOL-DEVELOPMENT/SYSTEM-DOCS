@@ -24,5 +24,39 @@ To ensure long-term maintainability and system robustness, the following archite
 * **Rationale:** Database schema migrations and data conversions are costly and risky. Reserved fields allow for **"on-the-fly"** data expansion.
 * **Specification:** Each field is defined as **100-byte Alpha-Numeric**, providing enough flexibility to handle new codes, flags, or identifiers without modifying the physical table structure.
 
+#### 4. Key Design Decisions
+
+- **Customer and Applicant are separated** to support multiple applications per customer.
+- **Premium and Underwriting are application-based**, not policy-based.
+- **Policy issuance is status-driven**, enabling controlled batch processing.
+- **One application generates at most one policy**, enforced by a unique constraint on `Applicant_ID`.
+
+---
+
+#### 5. Policy Issuance Flow (Batch Logic)
+
+1. Select policies where `Policy_Status_Code = 'RD'`
+2. Load related Applicant, Premium, and Underwriting records
+3. Generate policy document
+4. Update policy status to `IS` (Issued)
+
+---
+
+#### 6. Index Strategy
+
+Indexes are designed primarily to support:
+
+- Status-based policy retrieval  
+- Customer-level contract lookup  
+- Applicant-level joins (Premium / Underwriting)  
+- Batch issuance processing  
+
+---
+
+#### Author
+
+Designed as part of Insurance Core System modeling practice.
+
+
 
 
