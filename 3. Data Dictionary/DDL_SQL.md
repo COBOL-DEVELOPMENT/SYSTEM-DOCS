@@ -7,7 +7,8 @@
 #### Index applied for the policy issuing
 1. select policy_no from T4_policy after premium calculation.
 2. Policy_no indexed T4_Policy, T1_Applicant, T3_Premium_Calc, T2_Underwriting.
-3. Indexes used for policy retrieval logic: (Policy batch and contract lookup process).
+3. Indexes used for policy retrieval logic: (Policy batch and contract lookup process).  
+4. Applicant and policy status applied.
 
 #### SQL List
 1. Applicant Information
@@ -51,20 +52,22 @@ CREATE TABLE T0_Customer (
    - A customer may submit multiple applications
    ========================================================= */
 CREATE TABLE T1_Applicant (
-  Applicant_ID         BIGINT        NOT NULL,
-  Customer_ID          BIGINT        NOT NULL,
-  Applied_Product_Code CHAR(2)       NOT NULL,
-  Coverage_Code        CHAR(2)       NULL,
+  Applicant_ID             BIGINT        NOT NULL,
+  Customer_ID              BIGINT        NOT NULL,
+  Application_Status_Code  CHAR(2)       NOT NULL,   -- NEW
 
-  Address_Line1        VARCHAR(120)  NOT NULL,
-  Address_Line2        VARCHAR(120)  NULL,
-  City                 VARCHAR(60)   NOT NULL,
-  State_Code           CHAR(2)       NOT NULL,
-  Zip_Code             VARCHAR(10)   NOT NULL,
+  Applied_Product_Code     CHAR(2)       NOT NULL,
+  Coverage_Code            CHAR(2)       NULL,
 
-  Occupation_Code      CHAR(2)       NOT NULL,
-  Proceed_Date         DATETIME      NOT NULL,
-  Reserved             VARCHAR(100)  NULL,
+  Address_Line1            VARCHAR(120)  NOT NULL,
+  Address_Line2            VARCHAR(120)  NULL,
+  City                     VARCHAR(60)   NOT NULL,
+  State_Code               CHAR(2)       NOT NULL,
+  Zip_Code                 VARCHAR(10)   NOT NULL,
+
+  Occupation_Code          CHAR(2)       NOT NULL,
+  Proceed_Date             DATETIME      NOT NULL,
+  Reserved                 VARCHAR(100)  NULL,
 
   CONSTRAINT PK_T1_Applicant
     PRIMARY KEY (Applicant_ID),
@@ -73,6 +76,7 @@ CREATE TABLE T1_Applicant (
     FOREIGN KEY (Customer_ID)
     REFERENCES T0_Customer (Customer_ID)
 );
+
 
 /* =========================================================
    2. Underwriting
@@ -131,7 +135,7 @@ CREATE TABLE T4_Policy (
   Applicant_ID        BIGINT      NOT NULL,
   Issue_Date          DATE        NOT NULL,
   Coverage_Code       CHAR(2)     NULL,
-  Policy_Status_Code  CHAR(2)     NOT NULL,
+  Policy_Status_Code  CHAR(2)     NOT NULL,  -- New 
   Policy_Document_ID  VARCHAR(50) NOT NULL,
   Proceed_Date        DATETIME    NOT NULL,
   Reserved            VARCHAR(100) NULL,
