@@ -1,4 +1,4 @@
-## Insurance Code Book
+### Insurance Code Book
 
 #### Overview
 
@@ -15,7 +15,7 @@
 
 ------------------------------------------------------------------------
 
-## Code Categories
+### Code Categories
 
 #### GENDER
 
