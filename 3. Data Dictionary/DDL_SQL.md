@@ -3,7 +3,10 @@
 #### Overview (Ver 2.0)
 
 #### This document contains the DDL_SQL scripts for the Insurance System database.
-#### Insurance System Database DDL (PK / AK / UK / FK Applied).
+#### PK, AK, UK, FK applied. 
+#### Index applied for the policy issuing
+1. select policy_no from T4_policy after premium calculation.
+2. Policy_no indexed T4_Policy, T1_Applicant, T3_Premium_Calc, T2_Underwriting.
 
 #### SQL List
 1. Applicant Information
