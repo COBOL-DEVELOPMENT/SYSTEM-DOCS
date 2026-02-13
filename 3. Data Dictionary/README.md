@@ -20,7 +20,7 @@ To ensure long-term maintainability and system robustness, the following archite
 ---
 
 #### 3. Future-Proofing via Reserved Fields
-* **Strategy:** Every table is pre-allocated with three Reserved Fields (`Reserved_01` ~ `03`).
+* **Strategy:** Every table is pre-allocated with three Reserved Fields (`Reserved`).
 * **Rationale:** Database schema migrations and data conversions are costly and risky. Reserved fields allow for **"on-the-fly"** data expansion.
 * **Specification:** Each field is defined as **100-byte Alpha-Numeric**, providing enough flexibility to handle new codes, flags, or identifiers without modifying the physical table structure.
 
