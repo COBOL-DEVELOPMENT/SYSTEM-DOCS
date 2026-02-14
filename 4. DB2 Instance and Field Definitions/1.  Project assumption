@@ -1,17 +1,17 @@
-1. Basic Environment Assumptions
+## 1. Basic Environment Assumptions
 
-The project is implemented within the existing z/OS DB2 operational framework. 
+The project is implemented within the existing z/OS DB2 operational framework.  
 Physical database components, including DATABASE, STOGROUP, BUFFERPOOL, and VSAM dataset structures, are governed by established operational standards.
 
+---
 
-2. Architectural Assumptions
+## 2. Architectural Assumptions
 
-The existing 3270 channel remains unchanged for core legacy operations. 
+The existing 3270 channel remains unchanged for core legacy operations.  
 A new web channel is introduced through API-based integration, enabling coexistence with the legacy transaction flow without requiring modifications to core programs.
 
+---
 
-3. Data Flow Assumptions
+## 3. Data Flow Assumptions
 
 DB2 remains the system of record for all transactional data, ensuring data integrity and consistency across both legacy and web channels.
-
-   
