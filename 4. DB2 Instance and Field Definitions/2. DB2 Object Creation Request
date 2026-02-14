@@ -1,0 +1,50 @@
+# DB2 Object Creation Request – Development
+
+## 1. Subsystem: 
+- EX) DSN2 (DEV)
+
+---
+
+## 2. Database Creation Request
+- Database Name: INSDB01  
+- Purpose: Insurance Onboarding system development – New Business Module  
+
+---
+
+## 3. Tablespace Creation Request
+- Tablespace Name: TS_INS01  
+- Type: PBG (Universal Tablespace)  
+- Page Size: 4K  
+- Stogroup: SYSDEFLT (Standard Policy)  
+- Bufferpool: BP0 (Standard Policy)  
+
+*PRIQTY and SECQTY to follow DBA operational standards.*
+
+---
+
+## 4. Tables to be Created
+- INSAPP.T0_CUSTOMER  
+- INSAPP.T1_Applicant   
+- INSAPP.T2_Underwriting
+- INSAPP.T3_Premium_Calc
+- INSAPP.T4_Policy
+- INSAPP.T5_Reject
+
+---
+
+## 5. Authority Request
+- Schema Owner: INSAPP  
+- Application ID: INSAPPID  
+
+Requested Privileges:
+- SELECT  
+- INSERT  
+- UPDATE  
+- DELETE  
+
+---
+
+## 6. Additional Notes
+- DEV → TEST migration planned  
+- Online transaction processing (No batch jobs)  
+- Estimated volume: ~5 million rows per year  
