@@ -3,11 +3,11 @@ Connection information:
 1. Host: 204.90.115.200
 2. Port: 10443
 3. IBM Z ID: Z82530
-4. IBM Z Password:********
+4. IBM Z Password: ********
 
 ZOWE EXPLORER on VS-Code
 1. Data sets:
-   1) Z82530.CBL: cOBOL source
+   1) Z82530.CBL: COBOL source
 
       (1) SQL: DB2 SOURCE
 
@@ -15,9 +15,9 @@ ZOWE EXPLORER on VS-Code
 
           - CICS: ONLINE TRANSACTION FOR CRUD.
 
-          - BATCH PROGRAM FO
+          - BATCH PROGRAM
 
-      (3) FILES: VSAM, SAM, PRINT-FILE.
+      (3) FILES: VSAM, ISAm, SAM, and PRINT-FILE.
 
    2) Z82530.DATA:
 
