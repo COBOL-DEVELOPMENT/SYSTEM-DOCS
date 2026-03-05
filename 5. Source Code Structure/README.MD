@@ -17,7 +17,7 @@ ZOWE EXPLORER on VS-Code
 
           - BATCH PROGRAM
 
-      (3) FILES: VSAM, ISAm, SAM, and PRINT-FILE.
+      (3) FILES: VSAM, ISAM, SAM, and PRINT-FILE.
 
    2) Z82530.DATA:
 
