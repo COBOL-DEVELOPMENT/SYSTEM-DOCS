@@ -1,4 +1,4 @@
-       ```cobol
+```cobol
        IDENTIFICATION DIVISION.
        PROGRAM-ID. MGTEMPC.
 
