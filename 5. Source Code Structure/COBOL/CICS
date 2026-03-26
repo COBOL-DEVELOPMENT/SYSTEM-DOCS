@@ -1,5 +1,4 @@
-       </> Markdown
-
+       
        ```cobol
        IDENTIFICATION DIVISION.
        PROGRAM-ID. MGTEMPC.
@@ -548,4 +547,4 @@
                 ERASE
                 CURSOR
            END-EXEC.
-       ```
+```
