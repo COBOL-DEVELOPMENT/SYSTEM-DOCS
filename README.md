@@ -35,7 +35,6 @@ It demonstrates the ability to understand complex systems, interpret business lo
    6.1 Pilot Test
    6.2 Integrated Test
    6.3 Parallel Test 
-
 7. Migration Schedule 
 
 ---
