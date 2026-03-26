@@ -1,7 +1,7 @@
 ```
-JCL NAME: DEFVSAM
+# JCL NAME: DEFVSAM
 
-//DEFVSAM   JOB 1,NOTIFY=&SYSUID                                        JOB04145
+### //DEFVSAM   JOB 1,NOTIFY=&SYSUID                                        JOB04145
 //S1   EXEC PGM=IDCAMS
 //SYSPRINT  DD SYSOUT=*
 //SYSIN     DD *,SYMBOLS=CNVTSYS
