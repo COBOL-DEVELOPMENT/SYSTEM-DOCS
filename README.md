@@ -99,8 +99,7 @@ This repository contains system analysis and design documents for the insurance 
 - System Test Results - Pilot Test, Integrated Test, Parallel Test
    - Pilot Test
    - Integrated Test
-   - Parallel Test 
-   
-8. Migration Schedule 
+   - Parallel Test   
+- Migration Schedule 
 
 
