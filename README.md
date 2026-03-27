@@ -23,20 +23,20 @@ It demonstrates the ability to understand complex systems, interpret business lo
 ---
 
 ## Repository Structure
-1. System Development Plan
-2. Data Flow Diagram
-3. Data Dictionary
-4. DB2 Instance and Field Definitions
-5. Source Code Structure
-   5.1 Code Rules   
-   5.2 CopyBook  
-   5.3 z/OS connection vith VS Code
-6. System Test Results - Pilot Test, Integrated Test, Parallel Test
-   6.1 Pilot Test
-   6.2 Integrated Test
-   6.3 Parallel Test 
-7. Migration Schedule
-8. Contingency Plan
+- System Development Plan
+- Data Flow Diagram
+- Data Dictionary
+- DB2 Instance and Field Definitions
+- Source Code Structure
+   - Code Rules   
+   - CopyBook  
+   - z/OS connection vith VS Code
+- System Test Results - Pilot Test, Integrated Test, Parallel Test
+   - Pilot Test
+   - Integrated Test
+   - Parallel Test 
+- Migration Schedule
+- Contingency Plan
 
 ---
 
@@ -49,9 +49,9 @@ It demonstrates the ability to understand complex systems, interpret business lo
 ---
 
 ## How to Review This Project
-1. Start from the /docs directory  
-2. Follow system flow and documentation  
-3. Review COBOL examples for implementation details  
+- Start from the /docs directory  
+- Follow system flow and documentation  
+- Review COBOL examples for implementation details  
 
 ---
 
@@ -88,19 +88,18 @@ This repository contains system analysis and design documents for the insurance 
 
 ## Contents
 
-1. System Development Plan2. 
-3. Data Flow Diagram
-4. Data Dictionary
-5. DB2 Instance and Field Definitions
-6. Source Code Structure
-   5.1 Code Rules   
-   5.2 CopyBook  
-   5.3 z/OS connection vith VS Code
-
-7. System Test Results - Pilot Test, Integrated Test, Parallel Test
-   6.1 Pilot Test
-   6.2 Integrated Test
-   6.3 Parallel Test 
+- System Development Plan
+- Data Flow Diagram
+- Data Dictionary
+- DB2 Instance and Field Definitions
+- Source Code Structure
+   - Code Rules   
+   - CopyBook  
+   - z/OS connection vith VS Code
+- System Test Results - Pilot Test, Integrated Test, Parallel Test
+   - Pilot Test
+   - Integrated Test
+   - Parallel Test 
    
 8. Migration Schedule 
 
