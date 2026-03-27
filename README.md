@@ -1,5 +1,5 @@
-# SYSTEM-DOCS
-COBOL-based legacy system analysis and documentation project.
+
+# COBOL-based legacy system analysis and documentation project.
 
 
 
