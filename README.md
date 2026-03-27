@@ -18,21 +18,31 @@ It demonstrates the ability to understand complex systems, interpret business lo
 - JCL (Batch Job Processing)  
 - DB2 (Relational Database)  
 - System Analysis & Reverse Engineering  
-- Technical Documentation  
-
+- Technical Documentation
+  
 ---
 
-## Repository Structure
+## How to Review This Project
+- Start from the /SYSTEM-DOCS (COBOL / Mainframe System Analysis) directory  
+- Follow system flow and documentation  
+- Review COBOL examples for implementation details
+   
+---
+
+## Contents
 - System Development Plan
 - Data Flow Diagram
 - Data Dictionary
 - DB2 Instance and Field Definitions
+  - Project assumption
+  - DB2 Object Creation Request
 - Source Code Structure
-   - Code Rules   
-   - CopyBook  
-   - z/OS connection vith VS Code
-- System Test Results - Pilot Test, Integrated Test, Parallel Test
-   - Pilot Test
+   - JCL for DB2 Creation
+   - VSAM
+   - Z82530.CBL
+   - Z82530.JCL/DB2-JCL
+- ZOWE configuration
+- Pilot Test
    - Integrated Test
    - Parallel Test 
 - Migration Schedule
@@ -48,24 +58,10 @@ It demonstrates the ability to understand complex systems, interpret business lo
 
 ---
 
-## How to Review This Project
-- Start from the /docs directory  
-- Follow system flow and documentation  
-- Review COBOL examples for implementation details  
-
----
-
 ## Impact
 - Reduced complexity of legacy systems through documentation  
 - Enabled easier onboarding for new developers  
 - Supported long-term system maintenance  
-
----
-
-## What I Learned
-- Deep understanding of enterprise legacy systems  
-- How to analyze and interpret business logic  
-- Writing professional-level technical documentation  
 
 ---
 
@@ -78,28 +74,6 @@ It demonstrates the ability to understand complex systems, interpret business lo
 
 ## About Me
 COBOL developer with over 12 years of experience in enterprise systems, primarily in the insurance domain.  
-Experienced in system analysis, batch processing, and maintaining large-scale legacy applications.  
-
+Experienced in system analysis, batch processing, and maintaining large-scale legacy applications. 
 Currently transitioning into the U.S. IT field with a focus on system analysis and backend development.
-
-## System Documents
-This repository contains system analysis and design documents for the insurance policy onboarding system.
-
-
-## Contents
-
-- System Development Plan
-- Data Flow Diagram
-- Data Dictionary
-- DB2 Instance and Field Definitions
-- Source Code Structure
-   - Code Rules   
-   - CopyBook  
-   - z/OS connection vith VS Code
-- System Test Results - Pilot Test, Integrated Test, Parallel Test
-   - Pilot Test
-   - Integrated Test
-   - Parallel Test   
-- Migration Schedule 
-
 
