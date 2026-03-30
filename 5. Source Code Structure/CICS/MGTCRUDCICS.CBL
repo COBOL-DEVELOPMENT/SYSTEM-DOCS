@@ -1,4 +1,4 @@
-```cobol
+
        IDENTIFICATION DIVISION.
        PROGRAM-ID. MGTCRUDCICS.
 
@@ -546,4 +546,4 @@
                 ERASE
                 CURSOR
            END-EXEC.
-```
+
