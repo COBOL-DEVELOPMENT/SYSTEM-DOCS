@@ -1,5 +1,3 @@
-```cobol
-
 //Z28530CJ JOB (ACCT),'CICS COMPILE',CLASS=A,MSGCLASS=X,
 //             NOTIFY=&SYSUID
 //*
@@ -38,4 +36,3 @@
 //SYSPRINT DD SYSOUT=*
 //SYSUT1   DD UNIT=SYSDA,SPACE=(CYL,(1,1))
 
-```
