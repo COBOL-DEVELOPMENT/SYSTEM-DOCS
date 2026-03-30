@@ -1,0 +1,120 @@
+         PRINT NOGEN
+EMPSET   DFHMSD TYPE=MAP,MODE=INOUT,LANG=COBOL,STORAGE=AUTO,      X
+               TIOAPFX=YES,TERM=3270,CTRL=FREEKB
+
+*****************************************************************
+* EMPMAP1 - MAIN CRUD SCREEN
+*****************************************************************
+EMPMAP1  DFHMDI SIZE=(24,80),LINE=1,COLUMN=1
+
+* Title
+         DFHMDF POS=(1,27),LENGTH=24,INITIAL='EMPLOYEE CRUD SYSTEM',X
+               ATTRB=(PROT,BRT)
+
+* Function
+         DFHMDF POS=(3,2),LENGTH=20,INITIAL='FUNCTION (A/I/U/D):', X
+               ATTRB=(PROT)
+M1FUNC   DFHMDF POS=(3,24),LENGTH=1,ATTRB=(UNPROT,IC,FSET)
+
+* Employee ID
+         DFHMDF POS=(5,2),LENGTH=12,INITIAL='EMPLOYEE ID:',        X
+               ATTRB=(PROT)
+M1EID    DFHMDF POS=(5,24),LENGTH=10,ATTRB=(UNPROT,FSET)
+
+* First Name
+         DFHMDF POS=(6,2),LENGTH=11,INITIAL='FIRST NAME:',         X
+               ATTRB=(PROT)
+M1FN     DFHMDF POS=(6,24),LENGTH=50,ATTRB=(UNPROT,FSET)
+
+* Last Name
+         DFHMDF POS=(7,2),LENGTH=10,INITIAL='LAST NAME:',          X
+               ATTRB=(PROT)
+M1LN     DFHMDF POS=(7,24),LENGTH=50,ATTRB=(UNPROT,FSET)
+
+* Department
+         DFHMDF POS=(8,2),LENGTH=11,INITIAL='DEPARTMENT:',         X
+               ATTRB=(PROT)
+M1DP     DFHMDF POS=(8,24),LENGTH=50,ATTRB=(UNPROT,FSET)
+
+* Job Title
+         DFHMDF POS=(9,2),LENGTH=10,INITIAL='JOB TITLE:',          X
+               ATTRB=(PROT)
+M1JT     DFHMDF POS=(9,24),LENGTH=50,ATTRB=(UNPROT,FSET)
+
+* Hire Date
+         DFHMDF POS=(10,2),LENGTH=21,INITIAL='HIRE DATE (YYYY-MM-DD):',X
+               ATTRB=(PROT)
+M1HD     DFHMDF POS=(10,24),LENGTH=10,ATTRB=(UNPROT,FSET)
+
+* Salary
+         DFHMDF POS=(11,2),LENGTH=7,INITIAL='SALARY:',             X
+               ATTRB=(PROT)
+M1SL     DFHMDF POS=(11,24),LENGTH=9,ATTRB=(UNPROT,FSET)
+
+* Message line
+M1MSG    DFHMDF POS=(14,2),LENGTH=70,ATTRB=(PROT,BRT)
+
+* Help line
+         DFHMDF POS=(22,2),LENGTH=50,                               X
+               INITIAL='ENTER=PROCESS  PF3/CLEAR=EXIT',             X
+               ATTRB=(PROT,DRK)
+
+*****************************************************************
+* EMPMAP2 - DELETE CONFIRM SCREEN
+*****************************************************************
+EMPMAP2  DFHMDI SIZE=(24,80),LINE=1,COLUMN=1
+
+* Title
+         DFHMDF POS=(1,24),LENGTH=28,INITIAL='EMPLOYEE DELETE CONFIRM',X
+               ATTRB=(PROT,BRT)
+
+* Employee ID
+         DFHMDF POS=(4,2),LENGTH=12,INITIAL='EMPLOYEE ID:',        X
+               ATTRB=(PROT)
+M2EID    DFHMDF POS=(4,24),LENGTH=10,ATTRB=(PROT,BRT)
+
+* First Name
+         DFHMDF POS=(5,2),LENGTH=11,INITIAL='FIRST NAME:',         X
+               ATTRB=(PROT)
+M2FN     DFHMDF POS=(5,24),LENGTH=50,ATTRB=(PROT,BRT)
+
+* Last Name
+         DFHMDF POS=(6,2),LENGTH=10,INITIAL='LAST NAME:',          X
+               ATTRB=(PROT)
+M2LN     DFHMDF POS=(6,24),LENGTH=50,ATTRB=(PROT,BRT)
+
+* Department
+         DFHMDF POS=(7,2),LENGTH=11,INITIAL='DEPARTMENT:',         X
+               ATTRB=(PROT)
+M2DP     DFHMDF POS=(7,24),LENGTH=50,ATTRB=(PROT,BRT)
+
+* Job Title
+         DFHMDF POS=(8,2),LENGTH=10,INITIAL='JOB TITLE:',          X
+               ATTRB=(PROT)
+M2JT     DFHMDF POS=(8,24),LENGTH=50,ATTRB=(PROT,BRT)
+
+* Hire Date
+         DFHMDF POS=(9,2),LENGTH=21,INITIAL='HIRE DATE (YYYY-MM-DD):',X
+               ATTRB=(PROT)
+M2HD     DFHMDF POS=(9,24),LENGTH=10,ATTRB=(PROT,BRT)
+
+* Salary
+         DFHMDF POS=(10,2),LENGTH=7,INITIAL='SALARY:',             X
+               ATTRB=(PROT)
+M2SL     DFHMDF POS=(10,24),LENGTH=9,ATTRB=(PROT,BRT)
+
+* Confirm delete
+         DFHMDF POS=(12,2),LENGTH=20,INITIAL='CONFIRM DELETE (Y/N):',X
+               ATTRB=(PROT)
+M2CFM    DFHMDF POS=(12,24),LENGTH=1,ATTRB=(UNPROT,IC,FSET)
+
+* Message line
+M2MSG    DFHMDF POS=(14,2),LENGTH=70,ATTRB=(PROT,BRT)
+
+* Help line
+         DFHMDF POS=(22,2),LENGTH=50,                               X
+               INITIAL='ENTER=CONFIRM  PF3/CLEAR=EXIT',             X
+               ATTRB=(PROT,DRK)
+
+         DFHMSD TYPE=FINAL
+         END
